@@ -104,7 +104,7 @@ interface ServiceCardProps {
 export const ServiceCard: React.FC<ServiceCardProps> = ({ image, nome, preco, duracao }) => (
   <Card className="p-0 overflow-hidden hover:ring-1 hover:ring-[var(--primary)]/30">
     {image ? (
-      <img src={image} alt={nome} className="w-full h-28 sm:h-36 object-cover" />
+      <img src={image} alt={nome} className="w-full h-28 sm:h-36 object-cover object-center" />
     ) : (
       <div className="w-full h-28 sm:h-36 bg-[var(--surface)]" />
     )}

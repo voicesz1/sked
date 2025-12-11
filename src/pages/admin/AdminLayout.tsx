@@ -190,7 +190,7 @@ const ServicesPage = ({ store }: any) => {
             <Card key={s.id} className="flex justify-between items-center p-4">
               <div className="flex items-center gap-4">
                 {s.foto ? (
-                  <img src={s.foto} alt={s.nome} className="w-16 h-16 md:w-24 md:h-24 rounded-lg object-cover" onError={(e) => {
+                  <img src={s.foto} alt={s.nome} className="w-16 h-16 md:w-24 md:h-24 rounded-lg object-cover object-center" onError={(e) => {
                     const el = e.target as HTMLImageElement;
                     el.style.display = 'none';
                     const parent = el.parentElement;
@@ -362,7 +362,7 @@ const ProsPage = ({ store }: any) => {
       }).map((p: any) => (
          <Card key={p.id} className="flex flex-col items-center p-6 gap-4">
             {p.foto ? (
-              <img src={p.foto} alt={p.nome} className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover" onError={(e) => {
+              <img src={p.foto} alt={p.nome} className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover object-center" onError={(e) => {
                 const el = e.target as HTMLImageElement;
                 el.style.display = 'none';
                 const parent = el.parentElement;
