@@ -35,3 +35,9 @@ coverage/
 
 # Legacy server folder (not used)
 server/
+
+# Excluir backend e android para publicar apenas o site
+backend/
+android/
+capacitor.config.ts
+api.js
