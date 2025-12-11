@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sked</string>
+    <string name="title_activity_main">Sked</string>
+    <string name="package_name">com.smartagenda</string>
+    <string name="custom_url_scheme">com.smartagenda</string>
+</resources>

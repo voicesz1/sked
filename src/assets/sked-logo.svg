@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#13b8a7"/>
+      <stop offset="1" stop-color="#0ea5a4"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="64" height="64" rx="16" fill="#131c2d"/>
+  <circle cx="32" cy="32" r="26" fill="none" stroke="#223247" stroke-width="2"/>
+  <path d="M20 22 C 14 22 14 30 20 30 C 26 30 26 38 20 38 C 14 38 14 46 20 46" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+  <text x="34" y="40" font-size="16" font-family="Poppins, Inter, Arial, sans-serif" fill="#f59e0b" font-weight="700">K</text>
+</svg>

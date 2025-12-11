@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Empresa {
+  id                    Int      @id @default(autoincrement())
+  nome                  String
+  endereco              String?
+  telefone              String?
+  email                 String   @unique
+  senha                 String
+  logo                  String?
+  linkUnico             String   @unique
+  pixKey                String?
+  pixBeneficiaryName    String?
+  paymentFeePercent     Float?   @default(5)
+  asaasApiKey           String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  funcionarios          Funcionario[]
+  servicos              Servico[]
+  agendamentos          Agendamento[]
+  horarioFuncionamento  HorarioFuncionamento?
+  pagamentos            Pagamento[]
+}
+
+model Funcionario {
+  id          Int       @id @default(autoincrement())
+  nome        String
+  especialidade String?
+  foto        String?
+  telefone    String?
+  email       String?
+  bio         String?
+  ativo       Boolean   @default(true)
+  empresaId   Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  empresa     Empresa   @relation(fields: [empresaId], references: [id])
+  agendamentos Agendamento[]
+}
+
+model Servico {
+  id           Int       @id @default(autoincrement())
+  nome         String
+  descricao    String?
+  categoria    String?
+  preco        Float
+  duracao      Int
+  ativo        Boolean   @default(true)
+  empresaId    Int
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  empresa      Empresa   @relation(fields: [empresaId], references: [id])
+  agendamentos Agendamento[]
+}
+
+// Cliente não é necessário para o fluxo atual
+
+model Agendamento {
+  id              Int       @id @default(autoincrement())
+  empresaId       Int
+  servicoId       Int
+  funcionarioId   Int
+  clienteNome     String
+  clienteEmail    String?
+  clienteTelefone String?
+  dataHora        DateTime
+  observacoes     String?
+  status          String    @default("pendente")
+  pago            Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  empresa         Empresa   @relation(fields: [empresaId], references: [id])
+  servico         Servico   @relation(fields: [servicoId], references: [id])
+  funcionario     Funcionario @relation(fields: [funcionarioId], references: [id])
+  pagamentos      Pagamento[]
+}
+
+model HorarioFuncionamento {
+  id        Int    @id @default(autoincrement())
+  empresaId Int    @unique
+  segunda   String
+  terca     String
+  quarta    String
+  quinta    String
+  sexta     String
+  sabado    String?
+  domingo   String?
+
+  empresa   Empresa @relation(fields: [empresaId], references: [id])
+}
+
+model Pagamento {
+  id              Int       @id @default(autoincrement())
+  empresaId       Int?
+  agendamentoId   Int
+  asaasId         String?
+  customerIdAsaas String?
+  metodo          String
+  valorServico    Float
+  taxaAplicada    Float
+  valorTotal      Float
+  status          String
+  cobrancaUrl     String?
+  qrcodeBase64    String?
+  asaasPayload    Json
+  createdAt       DateTime  @default(now())
+
+  empresa         Empresa?     @relation(fields: [empresaId], references: [id])
+  agendamento     Agendamento  @relation(fields: [agendamentoId], references: [id])
+}

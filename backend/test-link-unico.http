@@ -1,0 +1,50 @@
+### Arquivo de Teste - Link Único
+### Use com extensão REST Client do VS Code ou Thunder Client
+
+@baseUrl = http://localhost:3000
+@linkUnico = smart-agenda-barbearia
+
+### 1. Fazer Login para obter link único
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "barbearia@example.com",
+  "senha": "123456"
+}
+
+### 2. Buscar Empresa pelo Link Único (PÚBLICO - SEM AUTENTICAÇÃO)
+GET {{baseUrl}}/public/empresa/{{linkUnico}}
+
+### 3. Listar Serviços da Empresa (PÚBLICO - SEM AUTENTICAÇÃO)
+GET {{baseUrl}}/public/empresa/{{linkUnico}}/servicos
+
+### 4. Listar Funcionários da Empresa (PÚBLICO - SEM AUTENTICAÇÃO)
+GET {{baseUrl}}/public/empresa/{{linkUnico}}/funcionarios
+
+### 5. Verificar Disponibilidade (PÚBLICO - SEM AUTENTICAÇÃO)
+### IMPORTANTE: Substitua {FUNCIONARIO_ID} pelo ID real de um funcionário
+GET {{baseUrl}}/public/empresa/{{linkUnico}}/disponibilidade?funcionarioId={FUNCIONARIO_ID}&data=2024-01-20
+
+### 6. Criar Agendamento (PÚBLICO - SEM AUTENTICAÇÃO)
+### IMPORTANTE: Substitua {SERVICO_ID} e {FUNCIONARIO_ID} pelos IDs reais
+POST {{baseUrl}}/public/empresa/{{linkUnico}}/agendamento
+Content-Type: application/json
+
+{
+  "servicoId": "{SERVICO_ID}",
+  "funcionarioId": "{FUNCIONARIO_ID}",
+  "clienteNome": "Roberto Silva",
+  "clienteEmail": "roberto@example.com",
+  "clienteTelefone": "(11) 98888-8888",
+  "dataHora": "2024-01-20T14:00:00Z",
+  "observacoes": "Primeira vez na barbearia"
+}
+
+### 7. Testar com Link Único Inválido (deve retornar 404)
+GET {{baseUrl}}/public/empresa/link-inexistente
+
+### 8. Testar Empresa 2 (Salão)
+@linkUnico2 = belle-epoque-salao
+GET {{baseUrl}}/public/empresa/{{linkUnico2}}
+

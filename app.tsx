@@ -41,43 +41,7 @@ const Router: React.FC<RouterProps> = ({ store }) => {
   };
 
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-500
-      ${store.empresa.tipo === 'barbearia' ? 'theme-barber' : 'theme-salon'}
-    `}>
-      {/* Definição de Variáveis CSS Dinâmicas para o Tema */}
-      <style>{`
-        .theme-barber {
-          --background: #09090b;
-          --foreground: #fafafa;
-          --card: #18181b;
-          --input: #27272a;
-          --primary: #7c3aed; /* Violeta */
-          --primary-fg: #ffffff;
-          --secondary: #27272a;
-          --secondary-fg: #fafafa;
-          --muted: #27272a;
-          --muted-fg: #a1a1aa;
-          --border: #3f3f46;
-        }
-        .theme-salon {
-          --background: #fdf2f8; /* Rosa bem claro */
-          --foreground: #4a044e;
-          --card: #ffffff;
-          --input: #fce7f3;
-          --primary: #db2777; /* Pink */
-          --primary-fg: #ffffff;
-          --secondary: #fbcfe8;
-          --secondary-fg: #831843;
-          --muted: #fce7f3;
-          --muted-fg: #9d174d;
-          --border: #fbcfe8;
-        }
-        body {
-          background-color: var(--background);
-          color: var(--foreground);
-        }
-      `}</style>
-      
+    <div className={`min-h-screen font-sans transition-colors duration-500`}>
       {renderRoute()}
     </div>
   );
@@ -91,7 +55,13 @@ export default function App() {
   // Solução para hydration no React
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  if (!mounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--background)' }}>
+        <img src={encodeURI('/logo sked.png')} alt="Sked" style={{ width: 128, height: 128, borderRadius: 24 }} />
+      </div>
+    );
+  }
 
   return <Router store={store} />;
 }

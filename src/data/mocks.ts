@@ -10,6 +10,7 @@ export interface Empresa {
   endereco: string;
   telefone: string;
   logo: string;
+  linkUnico: string;
 }
 
 export interface Servico {
@@ -43,12 +44,13 @@ export interface Agendamento {
 
 export const MOCK_EMPRESA_BARBEARIA: Empresa = {
   id: '1',
-  nome: 'Viking Cuts',
+  nome: 'Sked',
   tipo: 'barbearia',
-  slogan: 'Estilo clássico para o homem moderno.',
+  slogan: 'Agende fácil, cuide do seu estilo.',
   endereco: 'Rua Augusta, 123 - SP',
   telefone: '(11) 99999-9999',
-  logo: '🪓'
+  logo: '✂️',
+  linkUnico: 'smart-agenda-barbearia'
 };
 
 export const MOCK_EMPRESA_SALAO: Empresa = {
@@ -58,7 +60,8 @@ export const MOCK_EMPRESA_SALAO: Empresa = {
   slogan: 'Realce sua beleza natural.',
   endereco: 'Oscar Freire, 500 - SP',
   telefone: '(11) 98888-8888',
-  logo: '🌸'
+  logo: '🌸',
+  linkUnico: 'belle-epoque-salao'
 };
 
 export const MOCK_SERVICOS: Servico[] = [

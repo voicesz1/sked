@@ -1,7 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html, body, #root { height: 100%; }
-body { margin: 0; }
+body { margin: 0; background: var(--background); color: var(--foreground); }
 h1, h2, h3, h4, h5, h6 { color: var(--foreground); }
+
+:root {
+  --background: #0b1220;
+  --surface: #131c2d;
+  --foreground: #eaf1ff;
+  --primary: #13b8a7;
+  --primary-fg: #ffffff;
+  --accent: #f59e0b;
+  --accent-fg: #101010;
+  --secondary: #0ea5a4;
+  --secondary-fg: #ffffff;
+  --card: #121a2b;
+  --border: #223247;
+  --muted: #0e1626;
+  --muted-fg: #c9d7ee;
+  --input: #0f192a;
+}
+
+.dark {
+  --background: #0a0f1c;
+  --surface: #121a2b;
+  --foreground: #eaf1ff;
+  --primary: #13b8a7;
+  --primary-fg: #ffffff;
+  --accent: #f59e0b;
+  --accent-fg: #101010;
+  --secondary: #0ea5a4;
+  --secondary-fg: #ffffff;
+  --card: #121a2b;
+  --border: #223247;
+  --muted: #0e1626;
+  --muted-fg: #c9d7ee;
+  --input: #0f192a;
+}
