@@ -28,9 +28,6 @@ export const PublicHomePage = ({ navigate, store }: any) => {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
           className="max-w-2xl mx-auto space-y-6"
         >
-          <span className="inline-block px-3 py-1 rounded-full bg-[var(--secondary)] text-[var(--secondary-fg)] text-sm font-medium">
-            {empresa.tipo === 'barbearia' ? 'Desde 2015' : 'Espaço de Beleza'}
-          </span>
           <h2 className="text-5xl font-extrabold tracking-tight leading-tight">
             {empresa.slogan}
           </h2>

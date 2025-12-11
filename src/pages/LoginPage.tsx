@@ -37,7 +37,7 @@ export const LoginPage = ({ navigate, store }: any) => {
         </div>
         <div className="mt-4 pt-4 border-t border-[var(--border)] text-center">
             <button onClick={() => navigate('/')} className="text-xs text-[var(--muted-fg)] hover:text-[var(--foreground)]">
-                &larr; Voltar ao site público
+                &larr; Voltar ao inicio
             </button>
         </div>
       </Card>
