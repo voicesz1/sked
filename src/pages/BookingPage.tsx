@@ -68,7 +68,8 @@ export const BookingPage = ({ navigate, store, isMobile, initialBookingId }: any
       const code = `PIX|chave:${chavePix}|servico:${selection.service.nome}|valor:${selection.service.preco.toFixed(2)}|hora:${selection.time}`;
       setPixCode(code);
       const origin = typeof window !== 'undefined' ? window.location.origin : 'https://smart-agenda.local';
-      const link = `${origin}/empresa/${store.empresa.id}/agendar?b=${newBooking.id}`;
+      const slug = store.empresa?.linkUnico || 'smart-agenda-barbearia';
+      const link = `${origin}/empresa/${encodeURIComponent(slug)}/agendar?b=${newBooking.id}`;
       setShareLink(link);
       // Attach to booking object shape
       // @ts-ignore
@@ -102,7 +103,7 @@ export const BookingPage = ({ navigate, store, isMobile, initialBookingId }: any
   return (
     <div className="min-h-screen bg-[var(--background)] flex flex-col">
       <div className="p-4">
-        <Button variant="ghost" onClick={() => navigate(`/empresa/${store.empresa.id}`)}><ArrowLeft size={16} /> Voltar</Button>
+        <Button variant="ghost" onClick={() => navigate(`/empresa/${encodeURIComponent(store.empresa?.linkUnico || 'smart-agenda-barbearia')}`)}><ArrowLeft size={16} /> Voltar</Button>
       </div>
       
       <div className={`flex-1 ${isMobile ? 'px-4 py-4' : 'container mx-auto px-4 max-w-3xl py-8'}`}>
@@ -341,7 +342,7 @@ export const BookingPage = ({ navigate, store, isMobile, initialBookingId }: any
               <p className="text-[var(--muted-fg)] max-w-md">
                 Enviamos instruções para o pagamento por PIX no seu contato.
               </p>
-              <Button onClick={() => navigate('/empresa/1')} className="mt-8">Voltar ao Início</Button>
+              <Button onClick={() => navigate(`/empresa/${encodeURIComponent(store.empresa?.linkUnico || 'smart-agenda-barbearia')}`)} className="mt-8">Voltar ao Início</Button>
             </motion.div>
           )}
         </AnimatePresence>

@@ -52,6 +52,7 @@ model Servico {
   nome         String
   descricao    String?
   categoria    String?
+  foto         String?
   preco        Float
   duracao      Int
   ativo        Boolean   @default(true)

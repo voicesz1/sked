@@ -51,6 +51,12 @@ export default function App() {
       if (slug) {
         store.setEmpresa((prev: any) => ({ ...prev, linkUnico: slug }));
       }
+      const path = window.location.pathname || '/';
+      const parts = path.split('/').filter(Boolean);
+      if (parts[0] === 'empresa' && parts[1]) {
+        const fromPath = decodeURIComponent(parts[1]);
+        store.setEmpresa((prev: any) => ({ ...prev, linkUnico: fromPath }));
+      }
       window.addEventListener('popstate', () => {
         setTimeout(() => {
           const p = window.location.pathname || '/';
